@@ -324,13 +324,13 @@ def streamlit_app():
         unsafe_allow_html=True,
     )
 
-    st.markdown("<div class='title'>✨ Acne Detector — Enhanced AI</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Upload foto wajah/area kulit, otomatis preprocessing dengan AI, dan dapatkan rekomendasi perawatan yang akurat</div>", unsafe_allow_html=True)
+    st.markdown("<div class='title'>✨ Acne Detector</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Upload foto wajah/area kulit -> preprocessing pipeline -> dapatkan rekomendasi perawatan</div>", unsafe_allow_html=True)
 
     # Enhanced preprocessing info box
     st.markdown("""
     <div class='preprocess-info'>
-        <h3 style='text-align: center; margin-bottom: 20px; color: #58a6ff;'>🔧 AI Preprocessing Pipeline</h3>
+        <h3 style='text-align: center; margin-bottom: 20px; color: #58a6ff;'>🔧 Preprocessing Pipeline</h3>
         <div style='display: flex; justify-content: space-around; flex-wrap: wrap;'>
             <div class='step-indicator'>🔄 Resize → 640x640px</div>
             <div class='step-indicator'>⚡ Normalisasi → 0-1 range</div>
