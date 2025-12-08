@@ -398,8 +398,8 @@ def streamlit_app():
                 <h4 style='color: #3fb950; margin-bottom: 15px;'>💡 Tips Foto Terbaik</h4>
                 <div style='margin-bottom: 8px;'>☀️ Cahaya cukup dan merata</div>
                 <div style='margin-bottom: 8px;'>🎯 Hindari blur/goyang</div>
-                <div style='margin-bottom: 8px;'>🔍 Fokus pada area kulit</div>
-                <div>📏 Jarak optimal 20-30cm</div>
+                <div style='margin-bottom: 8px;'>🔍 Fokus pada area kulit wajah</div>
+                <div>📏 Jarak optimal 5-10cm</div>
             </div>
             """, unsafe_allow_html=True)
 
