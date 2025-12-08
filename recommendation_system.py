@@ -325,7 +325,7 @@ def streamlit_app():
     )
 
     st.markdown("<div class='title'>✨ Acne Detector</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Upload foto wajah/area kulit -> preprocessing pipeline -> dapatkan rekomendasi perawatan</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Upload foto wajah/area kulit ➡ preprocessing pipeline ➡ dapatkan rekomendasi perawatan</div>", unsafe_allow_html=True)
 
     # Enhanced preprocessing info box
     st.markdown("""
