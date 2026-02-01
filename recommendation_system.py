@@ -18,8 +18,8 @@ model_path = os.getenv("MODEL_PATH", "best.pt")
 @st.cache_resource
 def load_model():
     if not os.path.exists(model_path):
-        st.error(f"❌ Model tidak ditemukan di: {model_path}")
-        st.info("💡 Pastikan file best.pt ada di folder yang sama atau set environment variable MODEL_PATH")
+        st.error(f"❌ Model not found at: {model_path}")
+        st.info("💡 Ensure best.pt file is in the same folder or set MODEL_PATH environment variable")
         st.stop()
     model = YOLO(model_path)
     print("✅ Model loaded:", model_path)
@@ -32,33 +32,33 @@ treatment_map = {
     # =======================
     "blackheads": {
         "treatments": [
-            "Retinoid topikal (adapalene/tretinoin)",
-            "Asam salisilat",
-            "Benzoyl peroxide",
-            "Asam azelaat",
-            "Penghantaran dengan nanoteknologi: nanoemulsi, nanoparticle, solid lipid nanoparticle"
+            "Topical Retinoids (adapalene/tretinoin)",
+            "Salicylic Acid",
+            "Benzoyl Peroxide",
+            "Azelaic Acid",
+            "Nanotechnology delivery: nanoemulsion, nanoparticle, solid lipid nanoparticle"
         ],
         "note": (
-            "Retinoid topikal efektif untuk komedo terbuka/tertutup. "
-            "Asam salisilat untuk eksfoliasi pori. "
-            "Penghantaran nanoteknologi (nanoemulsi, liposom, solid lipid nanoparticle) "
-            "meningkatkan stabilitas bahan aktif dan dapat meningkatkan efektivitas terapi "
-            "dengan iritasi minimal."
+            "Topical retinoids are effective for open/closed comedones. "
+            "Salicylic acid for pore exfoliation. "
+            "Nanotechnology delivery (nanoemulsions, liposomes, solid lipid nanoparticles) "
+            "improves active ingredient stability and can enhance therapy effectiveness "
+            "with minimal irritation."
         )
     },
 
     "whiteheads": {
         "treatments": [
-            "Retinoid topikal (adapalene/tretinoin)",
-            "Asam salisilat",
-            "Benzoyl peroxide",
-            "Asam azelaat",
-            "Penghantaran dengan nanoteknologi: nanoemulsi, nanoparticle, solid lipid nanoparticle"
+            "Topical Retinoids (adapalene/tretinoin)",
+            "Salicylic Acid",
+            "Benzoyl Peroxide",
+            "Azelaic Acid",
+            "Nanotechnology delivery: nanoemulsion, nanoparticle, solid lipid nanoparticle"
         ],
         "note": (
-            "Retinoid topikal efektif untuk komedo tertutup. "
-            "Eksfoliasi dengan BHA membantu membuka sumbatan pori. "
-            "Penghantaran nanoteknologi dapat meningkatkan penetrasi bahan aktif."
+            "Topical retinoids are effective for closed comedones. "
+            "Exfoliation with BHA helps unclog pores. "
+            "Nanotechnology delivery can improve active ingredient penetration."
         )
     },
 
@@ -67,18 +67,18 @@ treatment_map = {
     # =======================
     "papules": {
         "treatments": [
-            "Retinoid topikal",
-            "Benzoyl peroxide",
-            "Antibiotik topikal (clindamycin / erythromycin)",
-            "Retinoid + Benzoyl peroxide kombinasi",
-            "Asam azelaat",
-            "Penghantaran dengan nanoteknologi: nanoemulsi, nanoparticle, solid lipid nanoparticle"
+            "Topical Retinoids",
+            "Benzoyl Peroxide",
+            "Topical Antibiotics (clindamycin / erythromycin)",
+            "Retinoid + Benzoyl Peroxide combination",
+            "Azelaic Acid",
+            "Nanotechnology delivery: nanoemulsion, nanoparticle, solid lipid nanoparticle"
         ],
         "note": (
-            "Kombinasi retinoid dan benzoyl peroxide untuk mengurangi inflamasi. "
-            "Antibiotik topikal (clindamycin, erythromycin) efektif untuk bakteri penyebab jerawat. "
-            "Asam azelaat bekerja sebagai anti-inflamasi dan anti-komedogenik. "
-            "Penggunaan nanoteknologi membantu meningkatkan efektivitas lokal."
+            "Combination of retinoid and benzoyl peroxide to reduce inflammation. "
+            "Topical antibiotics (clindamycin, erythromycin) are effective for acne-causing bacteria. "
+            "Azelaic acid works as an anti-inflammatory and anti-comedogenic agent. "
+            "Use of nanotechnology helps improve local effectiveness."
         )
     },
 
@@ -87,16 +87,16 @@ treatment_map = {
     # =======================
     "pustules": {
         "treatments": [
-            "Retinoid topikal",
-            "Benzoyl peroxide",
-            "Antibiotik topikal/oral",
-            "Asam azelaat",
-            "Penghantaran dengan nanoteknologi: nanoemulsi, nanoparticle, solid lipid nanoparticle"
+            "Topical Retinoids",
+            "Benzoyl Peroxide",
+            "Topical/Oral Antibiotics",
+            "Azelaic Acid",
+            "Nanotechnology delivery: nanoemulsion, nanoparticle, solid lipid nanoparticle"
         ],
         "note": (
-            "Pada pustul banyak, pertimbangkan antibiotik oral (doxycycline/minocycline). "
-            "Asam azelaat bermanfaat mengurangi inflamasi dan hiperpigmentasi. "
-            "Nanoteknologi dapat meningkatkan penetrasi bahan aktif."
+            "For ample pustules, consider oral antibiotics (doxycycline/minocycline). "
+            "Azelaic acid is beneficial for reducing inflammation and hyperpigmentation. "
+            "Nanotechnology can improve active ingredient penetration."
         )
     },
 
@@ -105,17 +105,17 @@ treatment_map = {
     # =======================
     "nodules": {
         "treatments": [
-            "Isotretinoin oral",
-            "Antibiotik oral",
-            "Kortikosteroid intralesi",
-            "Retinoid topikal",
-            "Penghantaran dengan nanoteknologi: liposom, nanopartikel, polymeric nanoparticles"
+            "Oral Isotretinoin",
+            "Oral Antibiotics",
+            "Intralesional Corticosteroids",
+            "Topical Retinoids",
+            "Nanotechnology delivery: liposomes, nanoparticles, polymeric nanoparticles"
         ],
         "note": (
-            "Isotretinoin adalah terapi utama untuk kasus berat. "
-            "Antibiotik oral membantu mengurangi inflamasi. "
-            "Kortikosteroid intralesi dipakai untuk nodul besar. "
-            "Nanopartikel membantu meningkatkan stabilitas bahan aktif pada lesi berat."
+            "Isotretinoin is the main therapy for severe cases. "
+            "Oral antibiotics help reduce inflammation. "
+            "Intralesional corticosteroids are used for large nodules. "
+            "Nanoparticles help improve active ingredient stability in severe lesions."
         )
     },
 
@@ -126,16 +126,16 @@ treatment_map = {
         "treatments": [
             "Niacinamide",
             "Vitamin C",
-            "Retinoid topikal",
-            "Asam azelaat",
+            "Topical Retinoids",
+            "Azelaic Acid",
             "Sunscreen",
-            "Penghantaran dengan nanoteknologi: liposom, nanoemulsi, nanopartikel perak/gold/silver nanoparticle"
+            "Nanotechnology delivery: liposomes, nanoemulsion, silver/gold/silver nanoparticles"
         ],
         "note": (
-            "Fokus pada pencegahan dan perbaikan hiperpigmentasi. "
-            "Niacinamide dan vitamin C membantu mencerahkan. "
-            "Sunscreen sangat penting untuk mencegah worsening PIH. "
-            "Nanoteknologi meningkatkan stabilitas dan penetrasi bahan aktif."
+            "Focus on prevention and hyperpigmentation repair. "
+            "Niacinamide and vitamin C help brighten. "
+            "Sunscreen is crucial to prevent worsening PIH. "
+            "Nanotechnology improves stability and penetration of active ingredients."
         )
     }
 }
@@ -162,13 +162,13 @@ def get_recommendation(class_name: str):
         return treatment_map[cls]
     else:
         return {
-            "treatments": ["Tidak ada rekomendasi tersedia untuk kelas ini."],
-            "note": "Jenis jerawat tidak terdefinisi dalam aturan sistem."
+            "treatments": ["No recommendation available for this class."],
+            "note": "Acne type not defined in system rules."
         }
 
 def detect_and_recommend(image_path, conf=0.25):
     """Jalankan deteksi pada satu gambar dan tampilkan hasil serta rekomendasi."""
-    print(f"\n📸 Memproses gambar: {image_path}")
+    print(f"\n📸 Processing image: {image_path}")
     
     # Load dan preprocess gambar
     img = Image.open(image_path).convert("RGB")
@@ -179,7 +179,7 @@ def detect_and_recommend(image_path, conf=0.25):
     res = results[0]
 
     if len(res.boxes) == 0:
-        print("❌ Tidak ada jerawat terdeteksi pada gambar ini.")
+        print("❌ No acne detected in this image.")
         return
 
     # Ambil hasil deteksi
@@ -190,20 +190,20 @@ def detect_and_recommend(image_path, conf=0.25):
 
     all_recos = []
 
-    print("\n🔍 Hasil Deteksi & Rekomendasi:")
+    print("\n🔍 Detection Results & Recommendations:")
     for xy, cf, c in zip(boxes, confs, clss):
         name = names[int(c)]
         reco = get_recommendation(name)
-        print(f"\n🧩 Jenis Lesi: {name} ({cf:.2f})")
-        print("💊 Rekomendasi Chemical Treatment:")
+        print(f"\n🧩 Lesion Type: {name} ({cf:.2f})")
+        print("💊 Chemical Treatment Recommendations:")
         for t in reco["treatments"]:
             print(f"   - {t}")
-        print(f"📋 Catatan: {reco['note']}")
+        print(f"📋 Note: {reco['note']}")
         all_recos.extend(reco["treatments"])
 
     # Ringkasan total
     summary = sorted(set(all_recos))
-    print("\n📦 Rangkuman Rekomendasi (tanpa duplikasi):")
+    print("\n📦 Recommendations Summary (without duplicates):")
     for t in summary:
         print(" -", t)
 
@@ -221,18 +221,18 @@ def run_inference_on_image(img: Image.Image, conf: float = 0.25, iou: float = 0.
     
     # Step 1: Resize
     if progress_callback:
-        progress_callback("🔄 Resizing gambar ke 640x640...", 0.2)
+        progress_callback("🔄 Resizing image to 640x640...", 0.2)
     time.sleep(0.3)  # Simulasi proses
     processed_img, normalized_array = preprocess_image(img, (640, 640))
     
     # Step 2: Normalisasi
     if progress_callback:
-        progress_callback("⚡ Normalisasi piksel ke rentang 0-1...", 0.5)
+        progress_callback("⚡ Normalizing pixels to 0-1 range...", 0.5)
     time.sleep(0.3)  # Simulasi proses
     
     # Step 3: Inference
     if progress_callback:
-        progress_callback("🧠 Menjalankan deteksi AI...", 0.8)
+        progress_callback("🧠 Running AI detection...", 0.8)
     
     results = model.predict(source=processed_img, conf=conf, iou=iou, save=False, verbose=False)
     res = results[0]
@@ -256,7 +256,7 @@ def run_inference_on_image(img: Image.Image, conf: float = 0.25, iou: float = 0.
             })
     
     if progress_callback:
-        progress_callback("✅ Selesai!", 1.0)
+        progress_callback("✅ Done!", 1.0)
     
     return annotated, detections
 
@@ -295,7 +295,7 @@ def image_to_bytes(img: Image.Image, format: str = "PNG") -> bytes:
 def streamlit_app():
     import streamlit as st  # import lokal agar aman saat modul di-import dari tempat lain
 
-    st.set_page_config(page_title="Deteksi Jerawat & Rekomendasi", page_icon="🧴", layout="wide")
+    st.set_page_config(page_title="Acne Detection & Recommendation", page_icon="🧴", layout="wide")
 
     # Enhanced styling dengan preprocessing indicators
     st.markdown(
@@ -325,7 +325,7 @@ def streamlit_app():
     )
 
     st.markdown("<div class='title'>✨ Acne Detector</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Upload foto wajah/area kulit ➡ preprocessing pipeline ➡ dapatkan rekomendasi perawatan</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Upload face/skin photo ➡ preprocessing pipeline ➡ get treatment recommendations</div>", unsafe_allow_html=True)
 
     # Enhanced preprocessing info box
     st.markdown("""
@@ -333,7 +333,7 @@ def streamlit_app():
         <h3 style='text-align: center; margin-bottom: 20px; color: #58a6ff;'>🔧 Preprocessing Pipeline</h3>
         <div style='display: flex; justify-content: space-around; flex-wrap: wrap;'>
             <div class='step-indicator'>🔄 Resize → 640x640px</div>
-            <div class='step-indicator'>⚡ Normalisasi → 0-1 range</div>
+            <div class='step-indicator'>⚡ Normalization → 0-1 range</div>
             <div class='step-indicator'>🧠 YOLO Detection</div>
         </div>
     </div>
@@ -348,16 +348,16 @@ def streamlit_app():
         st.session_state.detections = []
 
     with st.sidebar:
-        st.header("⚙️ Pengaturan")
-        conf = st.slider("Confidence", 0.1, 0.9, 0.25, 0.05, help="Semakin tinggi, deteksi makin yakin tapi bisa melewatkan objek kecil.")
-        iou = st.slider("IoU threshold", 0.1, 0.9, 0.45, 0.05, help="Kontrol NMS, lebih rendah = lebih banyak box yang bertahan.")
+        st.header("⚙️ Settings")
+        conf = st.slider("Confidence", 0.1, 0.9, 0.25, 0.05, help="Higher value means detection is more confident but might miss small objects.")
+        iou = st.slider("IoU threshold", 0.1, 0.9, 0.45, 0.05, help="Controls NMS, lower value = more boxes survive.")
         
         st.divider()
         st.markdown("**🔧 Preprocessing Settings:**")
         st.markdown("""
         <div style='background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid #30363d;'>
             <div style='margin-bottom: 8px;'>📐 Target size: <strong>640x640 px</strong></div>
-            <div style='margin-bottom: 8px;'>📊 Normalisasi: <strong>0-1 range</strong></div>
+            <div style='margin-bottom: 8px;'>📊 Normalization: <strong>0-1 range</strong></div>
             <div>🔄 Resampling: <strong>LANCZOS</strong></div>
         </div>
         """, unsafe_allow_html=True)
@@ -370,36 +370,36 @@ def streamlit_app():
         else:
             st.error("❌ Model not found")
         
-        if st.button("🗑️ Bersihkan hasil", type="secondary", use_container_width=True):
+        if st.button("🗑️ Clear Results", type="secondary", use_container_width=True):
             st.session_state.image = None
             st.session_state.annotated = None
             st.session_state.detections = []
             st.rerun()
 
-    tab_upload, tab_results, tab_about = st.tabs(["📤 Upload", "🖼️ Hasil Deteksi", "ℹ️ Tentang"]) 
+    tab_upload, tab_results, tab_about = st.tabs(["📤 Upload", "🖼️ Detection Results", "ℹ️ About"]) 
 
     with tab_upload:
         # Upload section dengan styling yang lebih bagus
         st.markdown("""
         <div class='upload-area'>
-            <h3 style='color: #58a6ff; margin-bottom: 15px;'>📤 Upload Gambar</h3>
-            <p style='opacity: 0.8; margin-bottom: 20px;'>Pilih gambar dari komputer atau ambil foto langsung</p>
+            <h3 style='color: #58a6ff; margin-bottom: 15px;'>📤 Upload Image</h3>
+            <p style='opacity: 0.8; margin-bottom: 20px;'>Choose image from computer or take a photo</p>
         </div>
         """, unsafe_allow_html=True)
         
         col_up1, col_up2 = st.columns([3, 2])
         with col_up1:
-            uploaded = st.file_uploader("Upload gambar", type=["jpg", "jpeg", "png"], label_visibility="collapsed")
-            cam = st.camera_input("Ambil foto", label_visibility="collapsed")
+            uploaded = st.file_uploader("Upload image", type=["jpg", "jpeg", "png"], label_visibility="collapsed")
+            cam = st.camera_input("Take photo", label_visibility="collapsed")
         with col_up2:
             st.markdown("""
             <div style='background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); 
                         border: 1px solid #30363d; border-radius: 15px; padding: 20px;'>
-                <h4 style='color: #3fb950; margin-bottom: 15px;'>💡 Tips Foto Terbaik</h4>
-                <div style='margin-bottom: 8px;'>☀️ Cahaya cukup dan merata</div>
-                <div style='margin-bottom: 8px;'>🎯 Hindari blur/goyang</div>
-                <div style='margin-bottom: 8px;'>🔍 Fokus pada area kulit wajah</div>
-                <div>📏 Jarak optimal 5-10cm</div>
+                <h4 style='color: #3fb950; margin-bottom: 15px;'>💡 Best Photo Tips</h4>
+                <div style='margin-bottom: 8px;'>☀️ Consistent and sufficient lighting</div>
+                <div style='margin-bottom: 8px;'>🎯 Avoid blur/shake</div>
+                <div style='margin-bottom: 8px;'>🔍 Focus on face skin area</div>
+                <div>📏 Optimal distance 5-10cm</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -425,11 +425,11 @@ def streamlit_app():
             with col_before:
                 st.markdown("""
                 <div class='before-after'>
-                    <div class='image-title'>📷 Gambar Asli</div>
+                    <div class='image-title'>📷 Original Image</div>
                 </div>
                 """, unsafe_allow_html=True)
                 st.image(img, use_container_width=True)
-                st.markdown(f"<p style='text-align: center; opacity: 0.7; margin-top: 10px;'>Resolusi: {img.size[0]}x{img.size[1]} px</p>", unsafe_allow_html=True)
+                st.markdown(f"<p style='text-align: center; opacity: 0.7; margin-top: 10px;'>Resolution: {img.size[0]}x{img.size[1]} px</p>", unsafe_allow_html=True)
             
             with col_arrow:
                 st.markdown("<div class='arrow-separator'>➡️</div>", unsafe_allow_html=True)
@@ -438,16 +438,16 @@ def streamlit_app():
                 preview_processed, _ = preprocess_image(img, (640, 640))
                 st.markdown("""
                 <div class='before-after'>
-                    <div class='image-title'>⚡ Setelah Preprocessing</div>
+                    <div class='image-title'>⚡ After Preprocessing</div>
                 </div>
                 """, unsafe_allow_html=True)
                 st.image(preview_processed, use_container_width=True)
-                st.markdown("<p style='text-align: center; opacity: 0.7; margin-top: 10px;'>Resolusi: 640x640 px | Normalisasi: 0-1</p>", unsafe_allow_html=True)
+                st.markdown("<p style='text-align: center; opacity: 0.7; margin-top: 10px;'>Resolution: 640x640 px | Normalization: 0-1</p>", unsafe_allow_html=True)
             
             st.markdown("<br>", unsafe_allow_html=True)
             col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
             with col_btn2:
-                run = st.button("🚀 Mulai Deteksi AI", type="primary", use_container_width=True)
+                run = st.button("🚀 Start AI Detection", type="primary", use_container_width=True)
             
             if run:
                 # Enhanced progress section
@@ -471,7 +471,7 @@ def streamlit_app():
                 st.session_state.detections = detections
                 
                 progress_bar.progress(1.0)
-                status_text.success(f"✅ Preprocessing & deteksi selesai! {len(detections)} objek ditemukan.")
+                status_text.success(f"✅ Preprocessing & detection complete! {len(detections)} objects found.")
                 time.sleep(1)
                 st.rerun()
 
@@ -480,8 +480,8 @@ def streamlit_app():
             st.markdown("""
             <div style='text-align: center; padding: 60px 20px; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); 
                         border: 2px dashed #30363d; border-radius: 20px; margin: 20px 0;'>
-                <h3 style='color: #58a6ff; margin-bottom: 15px;'>📊 Belum Ada Hasil</h3>
-                <p style='opacity: 0.8;'>Silakan upload gambar dan jalankan deteksi di tab Upload terlebih dahulu</p>
+                <h3 style='color: #58a6ff; margin-bottom: 15px;'>📊 No Results Yet</h3>
+                <p style='opacity: 0.8;'>Please upload an image and run detection in the Upload tab first</p>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -489,14 +489,14 @@ def streamlit_app():
             dets = st.session_state.detections
 
             # Enhanced metrics cards
-            st.markdown("<h3 style='text-align: center; color: #58a6ff; margin-bottom: 25px;'>📊 Statistik Deteksi</h3>", unsafe_allow_html=True)
+            st.markdown("<h3 style='text-align: center; color: #58a6ff; margin-bottom: 25px;'>📊 Detection Statistics</h3>", unsafe_allow_html=True)
             c1, c2, c3, c4 = st.columns(4)
             with c1:
                 st.markdown(f"""
                 <div class='metric-card'>
                     <div style='font-size: 2.5rem; margin-bottom: 8px;'>🎯</div>
                     <div style='font-size: 2rem; font-weight: bold; color: #3fb950;'>{len(dets)}</div>
-                    <div style='opacity: 0.8;'>Total Deteksi</div>
+                    <div style='opacity: 0.8;'>Total Detections</div>
                 </div>
                 """, unsafe_allow_html=True)
             with c2:
@@ -505,7 +505,7 @@ def streamlit_app():
                 <div class='metric-card'>
                     <div style='font-size: 2.5rem; margin-bottom: 8px;'>🧩</div>
                     <div style='font-size: 2rem; font-weight: bold; color: #58a6ff;'>{unique_classes}</div>
-                    <div style='opacity: 0.8;'>Jenis Berbeda</div>
+                    <div style='opacity: 0.8;'>Unique Types</div>
                 </div>
                 """, unsafe_allow_html=True)
             with c3:
@@ -522,7 +522,7 @@ def streamlit_app():
                 <div class='metric-card'>
                     <div style='font-size: 2.5rem; margin-bottom: 8px;'>📐</div>
                     <div style='font-size: 2rem; font-weight: bold; color: #f78166;'>640x640</div>
-                    <div style='opacity: 0.8;'>Resolusi</div>
+                    <div style='opacity: 0.8;'>Resolution</div>
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -531,26 +531,26 @@ def streamlit_app():
             with col_a:
                 st.markdown("""
                 <div class='image-container'>
-                    <div class='image-title'>🖼️ Hasil Deteksi AI</div>
+                    <div class='image-title'>🖼️ AI Detection Result</div>
                 </div>
                 """, unsafe_allow_html=True)
                 st.image(ann, use_container_width=True)
                 
                 img_bytes = image_to_bytes(ann)
                 ts = datetime.now().strftime("%Y%m%d-%H%M%S")
-                st.download_button("📥 Download Hasil (PNG)", data=img_bytes, file_name=f"acne-detections-{ts}.png", mime="image/png", use_container_width=True)
+                st.download_button("📥 Download Result (PNG)", data=img_bytes, file_name=f"acne-detections-{ts}.png", mime="image/png", use_container_width=True)
                 
             with col_b:
                 st.markdown("""
                 <div class='image-container'>
-                    <div class='image-title'>📋 Detail Deteksi</div>
+                    <div class='image-title'>📋 Detection Details</div>
                 </div>
                 """, unsafe_allow_html=True)
                 df = detections_to_df(dets)
                 if not df.empty:
                     st.dataframe(df.sort_values("confidence", ascending=False), use_container_width=True, hide_index=True, height=200)
                 else:
-                    st.info("Tidak ada deteksi ditemukan")
+                    st.info("No detections found")
                 
                 json_str = json.dumps(st.session_state.detections, indent=2)
                 st.download_button("📥 Download Data (JSON)", data=json_str, file_name=f"acne-detections-{ts}.json", mime="application/json", use_container_width=True)
@@ -558,7 +558,7 @@ def streamlit_app():
                 # Bagian Rekomendasi - langsung di kolom kanan untuk mengisi ruang kosong
                 if dets:
                     st.markdown("<br>", unsafe_allow_html=True)
-                    st.markdown("<h4 style='color: #3fb950; margin-bottom: 15px;'>💊 Rekomendasi Perawatan</h4>", unsafe_allow_html=True)
+                    st.markdown("<h4 style='color: #3fb950; margin-bottom: 15px;'>💊 Treatment Recommendations</h4>", unsafe_allow_html=True)
                     
                     # Ringkas jumlah per kelas
                     counts: Dict[str, int] = {}
@@ -586,14 +586,14 @@ def streamlit_app():
                                         font-size: 0.85rem; 
                                         color: #e8e6e3;
                                         backdrop-filter: blur(5px);'>
-                                <strong style='color: #ffc107;'>📝 Catatan:</strong><br>
+                                <strong style='color: #ffc107;'>📝 Note:</strong><br>
                                 {reco['note']}
                             </div>
                             """, unsafe_allow_html=True)
 
                     # Ringkasan lengkap
                     st.markdown("<br>", unsafe_allow_html=True)
-                    st.markdown("**📦 Ringkasan:**")
+                    st.markdown("**📦 Summary:**")
                     st.markdown("""
                     <div style='background: rgba(63, 185, 80, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); border-radius: 8px; padding: 10px; font-size: 0.9rem;'>
                     """, unsafe_allow_html=True)
@@ -602,9 +602,9 @@ def streamlit_app():
                     st.markdown("</div>", unsafe_allow_html=True)
 
     with tab_about:
-        st.write("**Model:** YOLO (Ultralytics) dengan preprocessing otomatis")
-        st.write("**Preprocessing:** Resize 640x640 + normalisasi piksel 0-1")
-        st.write("**Disclaimer:** Aplikasi ini hanya saran awal, bukan pengganti konsultasi dokter.")
+        st.write("**Model:** YOLO (Ultralytics) with automatic preprocessing")
+        st.write("**Preprocessing:** Resize 640x640 + pixel normalization 0-1")
+        st.write("**Disclaimer:** This application is only an initial suggestion, not a substitute for medical consultation.")
 
 
 if __name__ == "__main__":
